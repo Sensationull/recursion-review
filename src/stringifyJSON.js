@@ -26,20 +26,21 @@ identify what the object is
 */
 
 
+//dont forget undefined, null, function
 var stringifyJSON = function(obj) {
   if (typeof obj === "number" || typeof obj === "boolean" || typeof obj === "string") {
     return '"' + obj + '"';
   } else if (Array.isArray(obj)) {
     return "[" + obj + "]";
   } else if (typeof obj === "object"){
-    let bracket = "{"
+    let bracket = '{'
     for (var prop in obj) { 
-      bracket += (stringifyJSON(prop) + ":" + obj[prop] +',') ; 
+      bracket += (stringifyJSON(prop) + ':' + obj[prop] + ',') ; 
     } 
     let arr = Array.from(bracket);
     arr.splice(arr.length-1,1);
     let final = arr.join("")
-    return final +"}"
+    return final +'}'
   }
 };
 stringifyJSON({a:1, b:2})
